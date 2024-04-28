@@ -6,4 +6,5 @@
   --file-description='Image conversion using Pillow.' `
   --copyright='© 2024 Ian Pride' `
   --windows-icon-from-ico='.\rss\convert_image.ico' `
+  --assume-yes-for-downloads `
   '.\src\convert_image.py'
