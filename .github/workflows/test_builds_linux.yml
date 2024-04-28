@@ -16,4 +16,3 @@ jobs:
           .\pyenv_nuitka_setup.bash || exit $?
           .\nuitka_compile.bash || exit $?
           ls
-
