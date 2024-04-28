@@ -17,6 +17,3 @@ jobs:
           chmod 0755 nuitka_compile.bash || exit $?
           ./pyenv_nuitka_setup.bash || exit $?
           ./nuitka_compile.bash || exit $?
-          mv convert_image.bin convert_image
-          chmod 0755 convert_image
-          ls
