@@ -12,4 +12,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Test Build Windows
         run: |
-          python -V
+          cd Windows || Exit $LASTEXITCODE
+          .\pyenv_nuitka_setup.ps1 || Exit $LASTEXITCODE
+          .\nuitka_compile.ps1 || Exit $LASTEXITCODE
+          Get-ChildItem
+
