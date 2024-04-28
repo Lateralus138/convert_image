@@ -9,4 +9,5 @@ jobs:
   test_build_windows:
     runs-on: windows-latest
     steps:
-      - run: Get-ChildItem
+      - run: |
+          Get-ChildItem
