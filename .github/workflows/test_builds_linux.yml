@@ -13,8 +13,10 @@ jobs:
       - name: Test Build Linux
         run: |
           cd Linux || exit $?
-          chmod +x pyenv_nuitka_setup.bash || exit $?
-          chmod +x nuitka_compile.bash || exit $?
+          chmod 0755 pyenv_nuitka_setup.bash || exit $?
+          chmod 0755 nuitka_compile.bash || exit $?
           ./pyenv_nuitka_setup.bash || exit $?
           ./nuitka_compile.bash || exit $?
+          mv convert_image.bin convert_image
+          chomd 0755 convert_image
           ls
