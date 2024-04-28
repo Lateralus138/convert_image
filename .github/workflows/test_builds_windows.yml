@@ -1,0 +1,6 @@
+name: Test Build Windows
+
+on:
+  push:
+    branches:
+      - test_build_windows
