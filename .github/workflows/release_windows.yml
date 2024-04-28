@@ -13,4 +13,4 @@ jobs:
       - name: Test Windows Build For Release
         uses: benc-uk/workflow-dispatch@v1.2.3
         with:
-          workflow: test_build_windows
+          workflow: Test Build Windows
