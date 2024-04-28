@@ -13,6 +13,6 @@ jobs:
       - name: Test Build Linux
         run: |
           cd Linux || exit $?
-          .\pyenv_nuitka_setup.bash || exit $?
-          .\nuitka_compile.bash || exit $?
+          ./pyenv_nuitka_setup.bash || exit $?
+          ./nuitka_compile.bash || exit $?
           ls
