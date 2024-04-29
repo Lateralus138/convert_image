@@ -13,14 +13,19 @@ jobs:
       - uses: actions/checkout@v3
       - name: Build Windows
         run: |
-          New-Item -Path .\ -Name fake3.file -ItemType File -Force
+          New-Item -Path .\ -Name fake4.file -ItemType File -Force
           git config --global user.email "faithnomoread@yahoo.com"
           git config --global user.name ${{ github.actor }}
-          git add .\fake.file
+          git add .\fake*.file
           git commit -m 'Fake test merge and push'
           git push origin ${{ github.ref_name }}
           git fetch
           git checkout master
+          git merge release_windows
+          git checkout develop
+          git merge release_windows
+          git checkout master
+          git merge release_linux
 # git push origin ${{ github.actor }}:master
 # git push origin ${{ github.actor }}:release_linux
 # git push origin ${{ github.actor }}:develop
