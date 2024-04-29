@@ -15,7 +15,7 @@ jobs:
         run: |
           git config --global user.email "faithnomoread@yahoo.com"
           git config --global user.name "Lateralus138"
-          git delete .\fake.file
+          git rm .\fake.file
           git commit -m 'Fake test merge and push'
           git push origin "${{ github.ref_name }}"
           git push origin master
