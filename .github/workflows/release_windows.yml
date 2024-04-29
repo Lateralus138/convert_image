@@ -6,7 +6,7 @@ on:
       - .github/workflows/release_windows.yml
 
 jobs:
-  test_build_windows:
+  release_windows:
     if: github.ref_name == 'release_windows'
     runs-on: windows-latest
     steps:
@@ -19,12 +19,14 @@ jobs:
           git add .\fake*.file
           git commit -m 'Fake test merge and push'
           git push origin ${{ github.ref_name }}
-          git pull --allow-unrelated-histories
           git checkout master
+          git pull --allow-unrelated-histories
           git merge release_windows
           git checkout develop
+          git pull --allow-unrelated-histories
           git merge release_windows
           git checkout release_linux
+          git pull --allow-unrelated-histories
           git merge release_windows
 # git push origin ${{ github.actor }}:master
 # git push origin ${{ github.actor }}:release_linux
