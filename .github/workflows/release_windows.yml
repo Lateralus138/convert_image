@@ -22,7 +22,7 @@ jobs:
           git fetch
           git switch master
           git pull origin master --allow-unrelated-histories
-          git merge origin origin/release_windows
+          git merge origin release_windows
 # git push
 # git checkout master
 # git pull origin master --allow-unrelated-histories
