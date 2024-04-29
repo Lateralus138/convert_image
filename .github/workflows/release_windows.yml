@@ -8,10 +8,10 @@ on:
 jobs:
   test_build_windows:
     runs-on: windows-latest
+    if: ${{ github.ref_name }} == "release_windows"
     steps:
       - uses: actions/checkout@v3
       - name: Build Windows
-        if: ${{ github.ref_name }} == "release_windows"
         run: |
           Write-Output "${{ github.ref_name }}"
           cd Windows || Exit $LASTEXITCODE
