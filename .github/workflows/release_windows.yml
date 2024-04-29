@@ -2,31 +2,28 @@ name: Release Windows
 
 on:
   push: 
-    paths: 
-      - .github/workflows/release_windows.yml
+# paths: 
+#   - .github/workflows/release_windows.yml
+    branches:
+      - release_windows
 
 jobs:
   test_build_windows:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Test Build Windows
+      - name: Build Windows
         run: |
-          cd Windows || Exit $LASTEXITCODE
-          .\pyenv_nuitka_setup.ps1 || Exit $LASTEXITCODE
-          .\nuitka_compile.ps1 || Exit $LASTEXITCODE
-  release_windows:
-    runs-on: windows-latest
-    if: ${{ contains(join(needs.*.result, ','), 'success') }}
-    needs: [test_build_windows]
-    steps:
-      - uses: actions/checkout@v3
-      - name: Test Windows Build For Release
-<<<<<<< HEAD
-        uses: benc-uk/workflow-dispatch@v1.2.3
-        with:
-          workflow: Test Build Windows
-=======
-        run: |
-          Get-ChildItem
->>>>>>> develop
+          ${GITHUB_REF#refs/heads/})"
+# cd Windows || Exit $LASTEXITCODE
+# .\pyenv_nuitka_setup.ps1 || Exit $LASTEXITCODE
+# .\nuitka_compile.ps1 || Exit $LASTEXITCODE
+# release_windows:
+#   runs-on: windows-latest
+#   if: ${{ contains(join(needs.*.result, ','), 'success') }}
+#   needs: [test_build_windows]
+#   steps:
+#     - uses: actions/checkout@v3
+#     - name: Test Windows Build For Release
+#       run: |
+#         Get-ChildItem -Path Windows
