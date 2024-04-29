@@ -2,8 +2,8 @@ name: Test Build Windows
 
 on:
   push:
-    branches:
-      - test_build_windows
+    paths:
+      - .github/workflows/test_builds_windows.yml
 
 jobs:
   test_build_windows:
