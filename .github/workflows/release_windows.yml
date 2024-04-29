@@ -15,6 +15,7 @@ jobs:
           cd Windows || Exit $LASTEXITCODE
           .\pyenv_nuitka_setup.ps1 || Exit $LASTEXITCODE
           .\nuitka_compile.ps1 || Exit $LASTEXITCODE
+          Exit 255
   release_windows:
     runs-on: windows-latest
     if: ${{ contains(join(needs.*.result, ','), 'success') }}
