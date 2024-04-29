@@ -15,12 +15,14 @@ jobs:
         run: |
           Write-Output "${{ github.ref_name }}"
           New-Item -Path ..\ -Name fake.file -ItemType File
-          git add ..\fake.file
+          git config --global user.email "faithnomoread@yahoo.com"
+          git config --global user.name "Lateralus138"
+          git add .\fake.file
           git commit -m 'Fake test merge and push'
           git push origin ${{ github.ref_name }}
           git checkout master
           git merge release_windows
-          git add ..\fake.file
+          git add .\fake.file
           git commit -m 'Fake test merge and push'
           git push origin master
 # cd Windows || Exit $LASTEXITCODE
