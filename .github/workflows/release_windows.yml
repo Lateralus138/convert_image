@@ -19,10 +19,9 @@ jobs:
           git add .\fake*.file
           git add .\.github\workflows\release_windows.yml
           git commit -m 'Fake test merge and push'
-          git fetch
+          git pull
           git switch master
           git checkout release_windows .\.github\workflows\release_windows.yml
-          git pull origin release_windows --allow-unrelated-histories
 # git add .\.github\workflows\release_windows.yml
 # git commit -m 'Fake test merge and push'
 # git merge release_windows
