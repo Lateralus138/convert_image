@@ -20,9 +20,10 @@ jobs:
           git add .\.github\workflows\release_windows.yml
           git commit -m 'Fake test merge and push'
           git push
-          git checkout master
-          git pull origin master --allow-unrelated-histories
-          git merge --ff-only release_windows
+          git push origin master
+# git checkout master
+# git pull origin master --allow-unrelated-histories
+# git merge --ff-only release_windows
 # git pull
 # git push origin ${{ github.ref_name }}:master
 # git checkout master
