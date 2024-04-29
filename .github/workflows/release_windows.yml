@@ -22,6 +22,8 @@ jobs:
           git pull
           git switch master
           git checkout release_windows .\.github\workflows\release_windows.yml
+          git add .\.github\workflows\release_windows.yml
+          git push origin master
 # git add .\.github\workflows\release_windows.yml
 # git commit -m 'Fake test merge and push'
 # git merge release_windows
