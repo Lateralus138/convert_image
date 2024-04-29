@@ -23,6 +23,7 @@ jobs:
           git switch master
           git pull origin release_windows --allow-unrelated-histories
           git add .\.github\workflows\release_windows.yml
+          git commit -m 'Fake test merge and push'
           git merge release_windows
 # git push
 # git checkout master
