@@ -19,13 +19,13 @@ jobs:
           git add .\fake*.file
           git commit -m 'Fake test merge and push'
           git push origin ${{ github.ref_name }}
-          git checkout -b master
+          git checkout master
           git fetch
           git merge release_windows
-          git checkout -b develop
+          git checkout develop
           git fetch
           git merge release_windows
-          git checkout -b release_linux
+          git checkout release_linux
           git fetch
           git merge release_windows
 # git push -u origin ${{ github.actor }}:master
