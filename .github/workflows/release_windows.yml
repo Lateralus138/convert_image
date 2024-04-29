@@ -2,10 +2,8 @@ name: Release Windows
 
 on:
   push: 
-# paths: 
-#   - .github/workflows/release_windows.yml
-    branches:
-      - release_windows
+    paths: 
+      - .github/workflows/release_windows.yml
 
 jobs:
   test_build_windows:
@@ -13,11 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build Windows
+        if: ${{ github.ref_name }} == "release_windows"
         run: |
           Write-Output "${{ github.ref_name }}"
-# cd Windows || Exit $LASTEXITCODE
-# .\pyenv_nuitka_setup.ps1 || Exit $LASTEXITCODE
-# .\nuitka_compile.ps1 || Exit $LASTEXITCODE
+          cd Windows || Exit $LASTEXITCODE
+          .\pyenv_nuitka_setup.ps1 || Exit $LASTEXITCODE
+          .\nuitka_compile.ps1 || Exit $LASTEXITCODE
+          Get-ChildItem
 # release_windows:
 #   runs-on: windows-latest
 #   if: ${{ contains(join(needs.*.result, ','), 'success') }}
