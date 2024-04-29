@@ -18,7 +18,7 @@ jobs:
           git config --global user.name ${{ github.actor }}
           git add .\fake*.file
           git commit -m 'Fake test merge and push'
-          git push -u origin ${{ github.ref_name }}
+          git push origin ${{ github.ref_name }}
           git checkout -b master
           git fetch
           git merge release_windows
