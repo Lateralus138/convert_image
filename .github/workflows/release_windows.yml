@@ -17,6 +17,7 @@ jobs:
           git config --global user.email "faithnomoread@yahoo.com"
           git config --global user.name ${{ github.actor }}
           git add .\fake*.file
+          git add .\.github\workflows\release_windows.yml
           git commit -m 'Fake test merge and push'
           git push
           git checkout master
