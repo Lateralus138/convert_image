@@ -21,7 +21,8 @@ jobs:
           git commit -m 'Fake test merge and push'
           git fetch
           git switch master
-          git merge release_windows
+          git pull origin master --allow-unrelated-histories
+          git merge origin origin/master
 # git push
 # git checkout master
 # git pull origin master --allow-unrelated-histories
