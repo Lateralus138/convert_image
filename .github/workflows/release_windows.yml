@@ -19,12 +19,25 @@ jobs:
           git add .\fake*.file
           git add .\.github\workflows\release_windows.yml
           git commit -m 'Fake test merge and push'
-          git fetch
-          git switch master
-          git pull origin release_windows --allow-unrelated-histories
-          git add .\.github\workflows\release_windows.yml
-          git commit -m 'Fake test merge and push'
-          git merge release_windows
+      - name: Push files to another repository
+        uses: timthedev07/copy_file_to_another_repo_action@v2.0.0
+        env:
+          API_TOKEN_GITHUB: ${{ github.token}}
+        with:
+          source_file: './fake8.file'
+          destination_repo: 'Lateralus138/convert_image'
+          destination_folder: '.'
+          destination_branch: 'master'
+          user_email: 'faithnomoread@yahoo.com'
+          user_name: 'Lateralus138'
+          commit_message: 'A custom message for the commit'
+            
+# git fetch
+# git switch master
+# git pull origin release_windows --allow-unrelated-histories
+# git add .\.github\workflows\release_windows.yml
+# git commit -m 'Fake test merge and push'
+# git merge release_windows
 # git push
 # git checkout master
 # git pull origin master --allow-unrelated-histories
