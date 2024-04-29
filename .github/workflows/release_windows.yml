@@ -10,22 +10,22 @@ jobs:
     if: github.ref_name == 'release_windows'
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Build Windows
         run: |
-          New-Item -Path .\ -Name fake6.file -ItemType File -Force
+          New-Item -Path .\ -Name fake7.file -ItemType File -Force
           git config --global user.email "faithnomoread@yahoo.com"
           git config --global user.name ${{ github.actor }}
           git add .\fake*.file
           git commit -m 'Fake test merge and push'
           git push origin ${{ github.ref_name }}
           git pull --allow-unrelated-histories
-          git checkout master
+          git checkout origin origin/master
           git merge release_windows
-          git checkout develop
+          git checkout origin origin/develop
           git merge release_windows
-          git checkout master
-          git merge release_linux
+          git checkout origin origin/release_linux
+          git merge release_windows
 # git push origin ${{ github.actor }}:master
 # git push origin ${{ github.actor }}:release_linux
 # git push origin ${{ github.actor }}:develop
