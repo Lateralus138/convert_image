@@ -15,14 +15,14 @@ jobs:
         run: |
           Write-Output "${{ github.ref_name }}"
           New-Item -Path ..\ -Name fake.file -ItemType File
-          gh add ..\fake.file
-          gh commit -m 'Fake test merge and push'
-          gh push origin ${{ github.ref_name }}
-          gh checkout master
-          gh merge release_windows
-          gh add ..\fake.file
-          gh commit -m 'Fake test merge and push'
-          gh push origin master
+          git add ..\fake.file
+          git commit -m 'Fake test merge and push'
+          git push origin ${{ github.ref_name }}
+          git checkout master
+          git merge release_windows
+          git add ..\fake.file
+          git commit -m 'Fake test merge and push'
+          git push origin master
 # cd Windows || Exit $LASTEXITCODE
 # .\pyenv_nuitka_setup.ps1 || Exit $LASTEXITCODE
 # .\nuitka_compile.ps1 || Exit $LASTEXITCODE
