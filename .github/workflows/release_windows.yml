@@ -20,7 +20,7 @@ jobs:
           git add .\fake.file
           git commit -m 'Fake test merge and push'
           git push origin ${{ github.ref_name }}
-          git checkout master
+          git switch master
           git merge release_windows
           git add .\fake.file
           git commit -m 'Fake test merge and push'
