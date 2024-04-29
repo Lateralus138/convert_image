@@ -18,7 +18,7 @@ jobs:
           git config --global user.name ${{ github.actor }}
           git add .\fake*.file
           git commit -m 'Fake test merge and push'
-          git fetch
+          git pull origin master --allow-unrelated-histories
           git checkout master
           git merge --ff-only release_windows
 # git pull
