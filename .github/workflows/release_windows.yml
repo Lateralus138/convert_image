@@ -18,19 +18,19 @@ jobs:
           git config --global user.name ${{ github.actor }}
           git add .\fake*.file
           git commit -m 'Fake test merge and push'
-          git push origin ${{ github.ref_name }}
-          git checkout master
+          git push -u origin ${{ github.ref_name }}
+          git checkout -b master
           git pull --allow-unrelated-histories
           git merge release_windows
-          git checkout develop
+          git checkout -b develop
           git pull --allow-unrelated-histories
           git merge release_windows
-          git checkout release_linux
+          git checkout -b release_linux
           git pull --allow-unrelated-histories
           git merge release_windows
-# git push origin ${{ github.actor }}:master
-# git push origin ${{ github.actor }}:release_linux
-# git push origin ${{ github.actor }}:develop
+# git push -u origin ${{ github.actor }}:master
+# git push -u origin ${{ github.actor }}:release_linux
+# git push -u origin ${{ github.actor }}:develop
 # Write-Output "${{ github.ref_name }}"
 # New-Item -Path .\ -Name fake.file -ItemType File -Force
 # - uses: actions/checkout@v3
@@ -44,12 +44,12 @@ jobs:
 # git config --global user.name "Lateralus138"
 # git add .\fake.file
 # git commit -m 'Fake test merge and push'
-# git push origin ${{ github.ref_name }}
+# git push -u origin ${{ github.ref_name }}
 # git switch master
 # git merge release_windows
 # git add .\fake.file
 # git commit -m 'Fake test merge and push'
-# git push origin master
+# git push -u origin master
 # cd Windows || Exit $LASTEXITCODE
 # .\pyenv_nuitka_setup.ps1 || Exit $LASTEXITCODE
 # .\nuitka_compile.ps1 || Exit $LASTEXITCODE
