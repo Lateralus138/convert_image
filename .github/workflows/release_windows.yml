@@ -20,13 +20,13 @@ jobs:
           git commit -m 'Fake test merge and push'
           git push -u origin ${{ github.ref_name }}
           git checkout -b master
-          git pull --allow-unrelated-histories
+          git fetch
           git merge release_windows
           git checkout -b develop
-          git pull --allow-unrelated-histories
+          git fetch
           git merge release_windows
           git checkout -b release_linux
-          git pull --allow-unrelated-histories
+          git fetch
           git merge release_windows
 # git push -u origin ${{ github.actor }}:master
 # git push -u origin ${{ github.actor }}:release_linux
