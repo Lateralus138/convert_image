@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build Windows
         run: |
-          New-Item -Path .\ -Name fake8.file -ItemType File -Force
+          New-Item -Path .\ -Name fake9.file -ItemType File -Force
           git config --global user.email "faithnomoread@yahoo.com"
           git config --global user.name ${{ github.actor }}
           git add .\fake*.file
