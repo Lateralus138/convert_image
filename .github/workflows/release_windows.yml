@@ -6,32 +6,64 @@ on:
       - .github/workflows/release_windows.yml
 
 jobs:
-  test_build_windows:
+  release_windows:
     if: github.ref_name == 'release_windows'
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Build Windows
         run: |
-          Write-Output "${{ github.ref_name }}"
-          New-Item -Path .\ -Name fake.file -ItemType File -Force
-      - uses: actions/checkout@v2
-      - uses: everlytic/branch-merge@1.1.2
-        with:
-          github_token: ${{ github.token }}
-          source_ref: ${{ github.ref }}
-          target_branch: 'master'
-          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
+          New-Item -Path .\ -Name fake9.file -ItemType File -Force
+          git config --global user.email "faithnomoread@yahoo.com"
+          git config --global user.name ${{ github.actor }}
+          git add .\fake*.file
+          git add .\.github\workflows\release_windows.yml
+          git commit -m 'Fake test merge and push'
+          git pull
+          git switch master
+          git checkout release_windows .\.github\workflows\release_windows.yml
+          git add .\.github\workflows\release_windows.yml
+          git push origin master
+# git add .\.github\workflows\release_windows.yml
+# git commit -m 'Fake test merge and push'
+# git merge release_windows
+# git push
+# git checkout master
+# git pull origin master --allow-unrelated-histories
+# git merge --ff-only release_windows
+# git pull
+# git push origin ${{ github.ref_name }}:master
+# git checkout master
+# git fetch
+# git merge release_windows
+# git checkout develop
+# git fetch
+# git merge release_windows
+# git checkout  release_linux
+# git fetch
+# git merge release_windows
+# git push -u origin ${{ github.actor }}:master
+# git push -u origin ${{ github.actor }}:release_linux
+# git push -u origin ${{ github.actor }}:develop
+# Write-Output "${{ github.ref_name }}"
+# New-Item -Path .\ -Name fake.file -ItemType File -Force
+# - uses: actions/checkout@v3
+# - uses: everlytic/branch-merge@1.1.2
+#   with:
+#     github_token: ${{ github.token }}
+#     source_ref: ${{ github.ref }}
+#     target_branch: 'master'
+#     commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
 # git config --global user.email "faithnomoread@yahoo.com"
 # git config --global user.name "Lateralus138"
 # git add .\fake.file
 # git commit -m 'Fake test merge and push'
-# git push origin ${{ github.ref_name }}
+# git push -u origin ${{ github.ref_name }}
 # git switch master
 # git merge release_windows
 # git add .\fake.file
 # git commit -m 'Fake test merge and push'
-# git push origin master
+# git push -u origin master
 # cd Windows || Exit $LASTEXITCODE
 # .\pyenv_nuitka_setup.ps1 || Exit $LASTEXITCODE
 # .\nuitka_compile.ps1 || Exit $LASTEXITCODE
